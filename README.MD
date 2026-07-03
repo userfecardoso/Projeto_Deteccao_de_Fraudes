@@ -1,172 +1,61 @@
-# Projeto Final de Aprendizado de Máquina — Detecção de Fraudes em Transações de Varejo
+# Detecção de Fraudes em Transações de Varejo
 
-## Descrição do Projeto
-
-Este projeto foi desenvolvido como trabalho final da disciplina de Aprendizado de Máquina.
-
-O objetivo é construir um pipeline completo de Machine Learning para detectar transações fraudulentas em operações de varejo e e-commerce, utilizando técnicas de classificação supervisionada e detecção de anomalias.
-
-O projeto contempla todas as etapas fundamentais de um pipeline de aprendizado de máquina:
-
-- Análise exploratória dos dados (EDA)
-- Pré-processamento
-- Treinamento de modelos supervisionados
-- Aplicação de técnica de detecção de anomalias
-- Avaliação e comparação de desempenho
-- Discussão dos resultados
+Projeto desenvolvido para a disciplina de **Aprendizado de Máquina** com o objetivo de identificar transações fraudulentas utilizando modelos de classificação supervisionada e detecção de anomalias.
 
 ---
 
-## Problema
+## Objetivo
 
-A detecção de fraudes é um problema crítico em sistemas financeiros e operações de varejo, pois transações fraudulentas podem gerar prejuízos financeiros significativos.
+Desenvolver um pipeline completo de Machine Learning para:
 
-Com base em dados históricos de transações, este projeto busca identificar padrões de comportamento associados a fraudes, permitindo prever se uma transação é legítima ou fraudulenta.
+- Realizar Análise Exploratória dos Dados (EDA);
+- Pré-processar o dataset;
+- Treinar modelos de classificação;
+- Aplicar detecção de anomalias;
+- Comparar os modelos por meio de métricas de desempenho.
 
 ---
 
-## Dataset Utilizado
-
-Dataset:
+## Dataset
 
 **Retail Intelligence Fraud Detection Dataset**
 
-Características:
+- 100.000 transações
+- 21 atributos
+- Classificação binária
 
-- 100.000 registros de transações
-- 21 atributos (features)
-- Problema de classificação binária
+**Variável alvo**
 
-Variável alvo:
-
-- `fraud_flag`
-  - `0` → Transação legítima
-  - `1` → Transação fraudulenta
-
-Principais atributos presentes:
-
-- Valor da transação
-- Método de pagamento
-- Tipo de dispositivo
-- Localização
-- Categoria do comerciante
-- Frequência de transações
-- Indicadores de comportamento suspeito
-- Indicadores de risco
+- **0** → Transação legítima
+- **1** → Transação fraudulenta
 
 ---
 
-## Estrutura do Projeto
+## Pipeline do Projeto
 
-```bash
-fraud-detection-project/
-│
-├── data/
-│   └── retail_fraud_detection_100k.csv
-│
-├── notebook/
-│   └── fraud_detection_project.ipynb
-│
-├── src/
-│   └── fraud_detection_project.py
-│
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
+✔ Análise Exploratória dos Dados (EDA)
 
----
+✔ Pré-processamento
 
-## Análise Exploratória de Dados (EDA)
+✔ Divisão em treino e teste
 
-Durante a análise exploratória foram realizadas as seguintes etapas:
+✔ Treinamento dos modelos
 
-- Inspeção da estrutura do dataset
-- Análise estatística descritiva
-- Verificação de valores ausentes
-- Análise da distribuição da variável alvo
-- Estudo de correlação entre variáveis
+✔ Detecção de anomalias
 
-Gráficos gerados:
+✔ Avaliação dos resultados
 
-- Distribuição de fraudes
-- Histograma dos valores transacionados
-- Mapa de calor de correlação
 
-Principais insights:
+## Modelos Utilizados
 
-Observou-se forte correlação entre fraudes e variáveis relacionadas a comportamentos atípicos, como:
-
-- `velocity_flag`
-- `high_risk_device_flag`
-- `unusual_location_flag`
-- `previous_fraud_flag`
-
-Esses atributos demonstraram alta relevância para a detecção de transações suspeitas.
-
----
-
-## Pré-processamento dos Dados
-
-As etapas de pré-processamento incluíram:
-
-### 1. Remoção de atributos irrelevantes
-
-Foram removidas colunas de identificação que não agregam valor preditivo:
-
-- `transaction_id`
-- `customer_id`
-- `transaction_timestamp`
-
-### 2. Codificação de variáveis categóricas
-
-Variáveis categóricas foram convertidas para formato numérico utilizando:
-
-- One-Hot Encoding
-
-### 3. Normalização
-
-Foi aplicada padronização nos atributos numéricos com:
-
-- StandardScaler
-
-### 4. Divisão treino/teste
-
-Os dados foram separados em:
-
-- 80% para treino
-- 20% para teste
-
----
-
-## Modelos de Machine Learning Utilizados
-
-Foram treinados três modelos supervisionados:
-
-### Regressão Logística
-Modelo linear utilizado como baseline de comparação.
-
-### Random Forest
-Modelo baseado em ensemble de árvores de decisão, capaz de capturar relações não lineares complexas.
-
-### Gradient Boosting
-Modelo baseado em boosting com alto poder preditivo.
-
----
-
-## Detecção de Anomalias
-
-Além dos modelos supervisionados, foi aplicada uma técnica de detecção de anomalias:
-
-### Isolation Forest
-
-Esse algoritmo busca identificar observações anômalas com base em isolamento estatístico, sendo útil em cenários com pouca disponibilidade de rótulos.
+- Logistic Regression
+- Random Forest
+- Gradient Boosting
+- Isolation Forest
 
 ---
 
 ## Métricas de Avaliação
-
-Os modelos foram avaliados com as seguintes métricas:
 
 - Accuracy
 - Precision
@@ -175,81 +64,66 @@ Os modelos foram avaliados com as seguintes métricas:
 - ROC-AUC
 - Matriz de Confusão
 
-Essas métricas são especialmente relevantes em problemas de detecção de fraude, nos quais erros de classificação possuem alto impacto.
-
 ---
 
-## Resultados
+**Conclusão dos resultados**
 
-Após a avaliação dos modelos, observou-se que os modelos supervisionados apresentaram desempenho superior em relação ao método de detecção de anomalias.
-
-Principais observações:
-
-- O Random Forest apresentou o melhor desempenho geral
-- A Regressão Logística teve bom desempenho como baseline
-- O Gradient Boosting apresentou resultados competitivos
-- O Isolation Forest apresentou desempenho inferior
-
----
-
-## Conclusão
-
-Os resultados indicam que modelos supervisionados são mais adequados para detecção de fraude quando existe disponibilidade de dados rotulados.
-
-Entre os modelos analisados, o Random Forest apresentou o melhor equilíbrio entre precisão e recall, mostrando-se o modelo mais apropriado para este dataset.
-
-Como possíveis melhorias futuras, destacam-se:
-
-- Ajuste fino de hiperparâmetros
-- Engenharia de atributos
-- Técnicas de ensemble mais avançadas
-- Aplicação de Deep Learning
+- Os modelos supervisionados apresentaram desempenho superior ao método de detecção de anomalias.
+- Logistic Regression, Random Forest e Gradient Boosting obtiveram excelentes resultados.
+- O Isolation Forest apresentou desempenho inferior para este conjunto de dados.
 
 ---
 
 ## Tecnologias Utilizadas
 
-- Python 3
-- pandas
+- Python
+- Pandas
 - NumPy
 - Matplotlib
 - Seaborn
-- scikit-learn
-- Google Colab
-- Jupyter Notebook
+- Scikit-learn
+- Jupyter Notebook / Google Colab
 
-## Instalação
+---
 
-Clone o repositório:
+## Estrutura do Projeto
 
-```bash
-git clone <url-do-repositorio>
-```
-
-Instale as dependências:
-
-```bash
-pip install -r requirements.txt
+```text
+Projeto_Deteccao_de_Fraudes/
+│
+├── Data/
+│
+├── IMAGENS/
+│   ├── distribuicao_fraudes.png
+│   ├── distribuicao_valores_transacoes.png
+│   └── distribuicao_valores_transc.png
+│
+├── fraud_detection_project.ipynb
+├── fraud_detection_project.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## Execução
-
-Execute o Jupyter Notebook:
+## Como Executar
 
 ```bash
+git clone <URL_DO_REPOSITORIO>
+
+pip install -r requirements.txt
+
 jupyter notebook
 ```
 
 Abra o arquivo:
 
-```bash
-notebook/fraud_detection_project.ipynb
+```
+fraud_detection_project.ipynb
 ```
 
 ---
 
 ## Autor
 
-Felipe Cardoso
+**Felipe Cardoso**
