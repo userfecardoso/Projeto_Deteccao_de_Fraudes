@@ -1,6 +1,6 @@
 # Detecção de Fraudes em Transações de Varejo
 
-Projeto desenvolvido para a disciplina de **Aprendizado de Máquina** com o objetivo de identificar transações fraudulentas utilizando modelos de classificação supervisionada e detecção de anomalias.
+Projeto desenvolvido para a disciplina de **Inteligência Artificial** com o objetivo de identificar transações fraudulentas utilizando modelos de classificação supervisionada e detecção de anomalias.
 
 ---
 
